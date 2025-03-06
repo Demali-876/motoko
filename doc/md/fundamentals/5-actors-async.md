@@ -87,12 +87,14 @@ func checkDelivery(order: Text): async* Text {
 A customer places an order:
 
 ```motoko no-repl
+```motoko no-repl
 let response = await pizzaParlor.placeOrder("pepperoni");
 // "Order received: pepperoni"
 ```
 
 Another customer asks for a delivery update:
 
+```motoko no-repl
 ```motoko no-repl
 let status = await pizzaParlor.getDeliveryStatus("pepperoni");
 // "Your pepperoni will arrive in 20 minutes."
