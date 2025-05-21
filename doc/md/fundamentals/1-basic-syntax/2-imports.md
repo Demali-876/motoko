@@ -21,7 +21,7 @@ import Package "mo:itertools\Iter";
 ```
 
 **3. Files within the current project.**
-
+```
 import Utils "Utils";
 ```
 

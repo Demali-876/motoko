@@ -4,16 +4,21 @@ sidebar_position: 1
 
 # Variable declarations
 
-In Motoko, variables are declared using either `let` (immutable) or `var` (mutable).
+In Motoko variables represent state within actors, classes, and modules. Variables are declared using either `let` (immutable) or `var` (mutable).
 
 | Feature                 | `let`    | `var`       |
 |-------------------------|---------|-------------|
 | Reassignment           | Not allowed | Allowed |
 | Value modification     | Cannot be updated after assignment. | Can be updated after assignment. |
 
-In `persistent` actors, the values of `let` and `var` declarations are automatically preserved across upgrades, unless explicitly marked as `transient`. In non-`persistent` actors, these values are not retained unless marked as `stable`.  
-The `persistent` keyword simply treats all `let` and `var` declarations as `stable` by default.  
-Motoko encourages a programming style that favours immutability (using `let` over `var`), aligning with functional programming principles.
+:::info
+
+In `persistent` actors, `let` and `var` bindings are treated as stable by default. Actor state must use [stable types](https://internetcomputer.org/docs/motoko/fundamentals/types/stable-types), otherwise, declarations must be marked `transient`.
+
+The `persistent` keyword eliminates the need for explicit `stable` annotations, and `transient` replaces the legacy `flexible` modifier.
+
+Motoko encourages a programming style that favours immutability (using `let` over `var`), reflecting functional programming principles.
+:::
 
 ## Immutable variables
 
@@ -41,6 +46,6 @@ var (a, b) = (1, 2); // Not supported
 
 In contrast, `let` bindings do support pattern matching:
 
-```motoko
+```motoko no-repl
 let (a, b) = (1, 2); // Supported
 ```
